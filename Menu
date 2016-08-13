@@ -1,0 +1,106 @@
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+
+void digitos(int aux, int &dig);
+void validacion(int &n);
+int sum(int n);
+
+void main()
+{
+	int a, dig=0, s, op;
+
+	do
+	{
+		cout<<"\t\t\t\t MENU ";
+		cout<<"\t\t1. Contar los digitos de un numero."<<endl<< "\t\t2. Sumar los digitos de un numero" <<endl<< "\t\t0. Salir";
+
+		cout<<"Ingrese su opcion ";
+		cin>>op;
+
+		switch(op)
+		{
+		case 1:
+			{
+				cout<<"Ingrese un numero: ";
+				cin>>a;
+				
+				validacion(a);
+				digitos(a, dig);
+
+				cout<<"\nEL numero "<< a << " tiene " << dig <<" digitos"<<endl;
+				getch();
+			}break;
+
+		case 2:
+			{
+				cout<<"Ingrese un numero: ";
+				cin>>a;
+				
+				validacion(a);
+				s=sum (a);
+				cout<< "\nLa suma de los digitos es: "<<s;
+				getch();
+			}break;
+
+		case 0:
+			{
+				cout<<"Gracias";
+				getch();
+			}
+		default: 
+			{
+				cout << "Numero ingresado erroneo";
+				getch();
+				system ("cls");
+			}
+		}
+	
+	
+	}while(op != 0)
+
+	cout<< "\nLa suma de los digitos es: "<<s;
+
+	getch();
+
+}
+
+void digitos(int aux, int &dig)
+{
+		do
+	{
+		aux=aux/10;
+		dig++;
+	}while (aux>0);
+}
+
+
+void validacion(int &n)
+{
+	while (n<=0)
+	{
+		system ("cls");
+		cout<< "El numero ingresado tiene que ser natural, por favor ingrese otro numero: ";
+		cin>>n;
+
+	}
+
+
+}
+
+
+int sum(int n)
+{
+	int suma=0, aux;
+
+	do 
+	{
+		aux = n % 10;
+		n=n/10;
+		suma = suma + aux;
+
+	}while (n>0);
+
+	return suma;
+}
